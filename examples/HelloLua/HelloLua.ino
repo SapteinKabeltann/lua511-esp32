@@ -3,6 +3,10 @@
  *
  * Creates a Lua state, runs a short script, and prints the result to Serial.
  * Open Serial Monitor at 115200 baud to see output.
+ *
+ * Tip: If you open Serial Monitor after upload, the ESP32 may have already
+ * printed and exited setup(). Restart the module (e.g. EN/reset button)
+ * to see "Lua returned: 5, Hello from Lua" in the monitor.
  */
 
 #include <lua.h>

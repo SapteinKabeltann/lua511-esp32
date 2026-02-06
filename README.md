@@ -18,7 +18,8 @@ Lua is not available in the Arduino Library Manager for ESP32. This repository p
   git clone https://github.com/sapteinkabeltann/lua511-esp32.git
   ```
 
-After installation, open **File → Examples → Lua 5.1 for ESP32 → HelloLua** to try a minimal example.
+After installation, open **File → Examples → Lua 5.1 for ESP32 → HelloLua** to try a minimal example.  
+**Serial Monitor:** Open at 115200 baud. If you open it after uploading, the ESP32 may already have run `setup()` and printed; restart the module (EN/reset button) to see the output.
 
 ## Refreshing the Lua source (optional)
 
