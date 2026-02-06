@@ -9,6 +9,10 @@
 #ifndef lua_h
 #define lua_h
 
+#if defined(__cplusplus)
+extern "C" {
+#endif
+
 #include <stdarg.h>
 #include <stddef.h>
 
@@ -385,5 +389,9 @@ struct lua_Debug {
 * SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 ******************************************************************************/
 
+
+#if defined(__cplusplus)
+}
+#endif
 
 #endif
