@@ -54,6 +54,8 @@ void setup() {
 }
 ```
 
+Funksjoner som `luaL_dostring` og `lua_pcall` returnerer **0** (eller `LUA_OK`) når alt gikk bra; andre verdier betyr feil (sjekk feilmeldingen med `lua_tostring(L, -1)`).
+
 Register your own C functions with `lua_register()` or `lua_pushcfunction()` so that Lua scripts can call into your firmware (GPIO, display, WiFi, etc.).
 
 ## Why Lua 5.1?
