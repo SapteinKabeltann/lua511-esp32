@@ -59,11 +59,20 @@ function Copy-LuaFiles {
 
 # Main
 Write-Host "lua511-esp32: fetching Lua 5.1.5 into src/..."
-$luaDir = Get-LuaSource
-# LuaDist (og offisiell lua) har .c/.h i undermappen src/
-$srcSub = Join-Path $luaDir "src"
-if (Test-Path $srcSub) { $luaDir = $srcSub }
+$luaRoot = Get-LuaSource
+$srcSub = Join-Path $luaRoot "src"
+if (Test-Path $srcSub) { $luaDir = $srcSub } else { $luaDir = $luaRoot }
+
+New-Item -ItemType Directory -Force -Path $SrcDir | Out-Null
+# luaconf.h is in the archive root, not in src/
+$luaconf = Join-Path $luaRoot "luaconf.h"
+if (Test-Path $luaconf) {
+    Copy-Item $luaconf -Destination $SrcDir -Force
+    Write-Host "  luaconf.h (from archive root)"
+}
+
 $n = Copy-LuaFiles -LuaDir $luaDir
+if (Test-Path $luaconf) { $n++ }
 Remove-Item -Recurse -Force $TempDir -ErrorAction SilentlyContinue
 Remove-Item (Join-Path $env:TEMP "lua-5.1.5.zip") -ErrorAction SilentlyContinue
 Write-Host "Done. $n files copied to $SrcDir"
